@@ -25,6 +25,19 @@ claude plugin marketplace add /path/to/jolt-claude-plugin
 claude plugin install jolt-claude@jolt-claude-plugin
 ```
 
+## Kimi Code
+
+`jolt-claude.kimi` runs the same checks under Kimi Code's hooks, and
+[jolt-kimi-plugin](https://github.com/jlt-commons/jolt-kimi-plugin) wires it
+up. Kimi drops a PostToolUse hook's output, so the work moves to the hooks
+that can block:
+
+- PreToolUse (Write, Edit) refuses a change that would leave the file
+  unreadable as Clojure, with the position.
+- PostToolUse repairs a dropped closer on disk and notes the file.
+- Stop lints the files changed since the last stop and blocks on errors, so
+  the agent fixes them before it finishes.
+
 ## Develop
 
 ```sh

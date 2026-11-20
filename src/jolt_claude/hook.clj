@@ -49,7 +49,9 @@
 (defn- finding-line [rel {:keys [row col severity message]}]
   (str rel ":" row ":" col ": " severity ": " message))
 
-(defn- finding-lines [rel findings]
+(defn finding-lines
+  "Findings as file:line:col lines, capped at max-findings."
+  [rel findings]
   (let [shown (take max-findings findings)
         more (- (count findings) (count shown))]
     (cond-> (mapv #(finding-line rel %) shown)
@@ -82,11 +84,13 @@
       (context (str/join "\n" (concat (some-> repaired vector)
                                       (finding-lines rel findings)))))))
 
-(defn- lsp-bin []
+(defn lsp-bin
+  "The jolt-lsp binary's path, or nil when there is none."
+  []
   (let [b (or (System/getenv "JOLT_LSP") "jolt-lsp")]
     (some-> (fs/which b) str)))
 
-(defn- lsp
+(defn lsp
   "Run jolt-lsp with --json and `args` in `root`; the parsed output, or nil
   when it printed nothing readable."
   [bin root & args]
