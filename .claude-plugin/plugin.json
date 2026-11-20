@@ -1,0 +1,8 @@
+{
+  "name": "jolt-claude",
+  "version": "0.1.0",
+  "description": "Hooks for Jolt/Clojure: repair dropped closers and lint each file Claude writes, with jolt-lsp",
+  "author": { "name": "Dmitri Sotnikov" },
+  "license": "EPL-2.0",
+  "keywords": ["clojure", "jolt", "lint", "hooks"]
+}

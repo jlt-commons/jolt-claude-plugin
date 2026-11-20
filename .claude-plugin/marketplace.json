@@ -1,0 +1,14 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "jolt-claude-plugin",
+  "description": "Jolt Claude Code plugin",
+  "owner": { "name": "Dmitri Sotnikov" },
+  "plugins": [
+    {
+      "name": "jolt-claude",
+      "description": "Repair and lint Jolt/Clojure files after each write, with jolt-lsp",
+      "source": "./",
+      "category": "development"
+    }
+  ]
+}

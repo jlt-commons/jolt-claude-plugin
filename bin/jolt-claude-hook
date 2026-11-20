@@ -1,0 +1,6 @@
+#!/bin/sh
+# Claude Code hook launcher: runs jolt-claude.hook from this checkout.
+# Hook input arrives on stdin and passes straight through.
+here="$(cd "$(dirname "$0")" && pwd -P)"
+cd "$here/.." || exit 0
+exec "${JOLT:-jolt}" -m jolt-claude.hook
